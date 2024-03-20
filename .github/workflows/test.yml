@@ -2,16 +2,16 @@ name: test
 
 on:
   workflow_dispatch: ~
-  schedule:
-    - cron: "0 * * * *"  # Runs every hour at the beginning of the hour (0 minutes)
+  # schedule:
+  #   - cron: "0 * * * *"  # Runs every hour at the beginning of the hour (0 minutes)
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for random time
-        run: |
-          SECONDS=$(shuf -n 1 -i 1-60)
-          echo "Waiting for $SECONDS seconds..."
-          sleep $SECONDS
-          echo "Done waiting."
+        run: docker run -it --rm mingrammer/flog -n 50
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker run -it --rm mingrammer/flog -n 100
