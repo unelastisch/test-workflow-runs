@@ -1,0 +1,16 @@
+name: test
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour at the beginning of the hour (0 minutes)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for random time
+        run: |
+          SECONDS=$(shuf -n 1 -i 1-60)
+          echo "Waiting for $SECONDS seconds..."
+          sleep $SECONDS
+          echo "Done waiting."
