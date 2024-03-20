@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for random time
-        run: docker run -it --rm mingrammer/flog -n 50
+        run: docker run --rm mingrammer/flog -n 10
   lint:
     runs-on: ubuntu-latest
     steps:
-      - run: docker run -it --rm mingrammer/flog -n 100
+      - run: docker run --rm mingrammer/flog -n 10
