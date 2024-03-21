@@ -6,6 +6,16 @@ on:
   #   - cron: "0 * * * *"  # Runs every hour at the beginning of the hour (0 minutes)
 
 jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - lines: 30
+          - lines: 50
+    steps:
+      - name: Do it
+        run: docker run --rm mingrammer/flog -n ${{ matrix.lines }}
   test:
     runs-on: ubuntu-latest
     steps:
